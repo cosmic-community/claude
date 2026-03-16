@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getCategories } from '@/lib/cosmic';
 
+// Changed: Force dynamic rendering to avoid static generation failures
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Categories — Claude',
   description: 'Browse categories of articles about Claude AI capabilities.',

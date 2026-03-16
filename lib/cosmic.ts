@@ -23,10 +23,13 @@ export async function getPosts(): Promise<Post[]> {
       return dateB - dateA;
     });
   } catch (error: unknown) {
+    // Changed: Return empty array for 404 (no objects found)
     if (hasStatus(error) && error.status === 404) {
       return [];
     }
-    throw new Error('Failed to fetch posts');
+    // Changed: Log error and return empty array instead of throwing during build
+    console.error('Failed to fetch posts:', error);
+    return [];
   }
 }
 
@@ -43,7 +46,9 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     if (hasStatus(error) && error.status === 404) {
       return null;
     }
-    throw new Error('Failed to fetch post');
+    // Changed: Log error and return null instead of throwing
+    console.error('Failed to fetch post:', error);
+    return null;
   }
 }
 
@@ -60,7 +65,9 @@ export async function getCategories(): Promise<Category[]> {
     if (hasStatus(error) && error.status === 404) {
       return [];
     }
-    throw new Error('Failed to fetch categories');
+    // Changed: Log error and return empty array instead of throwing
+    console.error('Failed to fetch categories:', error);
+    return [];
   }
 }
 
@@ -77,7 +84,9 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
     if (hasStatus(error) && error.status === 404) {
       return null;
     }
-    throw new Error('Failed to fetch category');
+    // Changed: Log error and return null instead of throwing
+    console.error('Failed to fetch category:', error);
+    return null;
   }
 }
 
@@ -100,6 +109,8 @@ export async function getPostsByCategoryId(categoryId: string): Promise<Post[]> 
     if (hasStatus(error) && error.status === 404) {
       return [];
     }
-    throw new Error('Failed to fetch posts by category');
+    // Changed: Log error and return empty array instead of throwing
+    console.error('Failed to fetch posts by category:', error);
+    return [];
   }
 }

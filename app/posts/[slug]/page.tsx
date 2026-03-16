@@ -5,6 +5,9 @@ import { notFound } from 'next/navigation';
 import { getPostBySlug, getPosts } from '@/lib/cosmic';
 import CategoryBadge from '@/components/CategoryBadge';
 
+// Changed: Force dynamic rendering to avoid static generation failures
+export const dynamic = 'force-dynamic';
+
 interface PostPageProps {
   params: Promise<{ slug: string }>;
 }

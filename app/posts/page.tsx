@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { getPosts, getCategories } from '@/lib/cosmic';
 import CategoryFilter from '@/components/CategoryFilter';
 
+// Changed: Force dynamic rendering to avoid static generation failures
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'All Posts — Claude',
   description: 'Browse all articles about Claude AI capabilities, features, and use cases.',

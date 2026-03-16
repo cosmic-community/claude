@@ -5,6 +5,9 @@ import { notFound } from 'next/navigation';
 import { getCategoryBySlug, getPostsByCategoryId } from '@/lib/cosmic';
 import PostCard from '@/components/PostCard';
 
+// Changed: Force dynamic rendering to avoid static generation failures
+export const dynamic = 'force-dynamic';
+
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
 }

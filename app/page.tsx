@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { getPosts, getCategories } from '@/lib/cosmic';
 import PostCard from '@/components/PostCard';
-import CategoryBadge from '@/components/CategoryBadge';
+
+// Changed: Force dynamic rendering to avoid static generation failures
+export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   const [posts, categories] = await Promise.all([
